@@ -1,0 +1,24 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}" [routerLink]="['/']" class="navbar-brand">Home <span class="glyphicon glyphicon-home"></span></a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/finance']">Finance <span class="glyphicon glyphicon-piggy-bank"></span></a></li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/health']">Health <span class="glyphicon glyphicon-heart-empty"></span></a></li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/tasks']">Tasks <span class="glyphicon glyphicon-tasks"></span></a></li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/profile']">Profile  <span class="glyphicon glyphicon-user"></span></a></li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/login']">Login <span class="glyphicon glyphicon-log-in"></span></a></li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/register']">Register <span class="glyphicon glyphicon-flash"></span></a></li>
+        <li><a href="#">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+      </ul>
+      </div><!--/.nav-collapse -->
+  </div>
+</nav>
