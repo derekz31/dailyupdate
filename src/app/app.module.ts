@@ -6,6 +6,9 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { DataService } from './services/data.service';
+import { ValidateService } from './services/validate.service';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './shared/auth.guard';
 
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -50,7 +53,10 @@ const routing = RouterModule.forRoot([
   ],
   providers: [
     DataService,
-    ToastComponent
+    ToastComponent,
+    ValidateService,
+    AuthService,
+    AuthGuard
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

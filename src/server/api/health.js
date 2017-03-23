@@ -5,7 +5,7 @@ const Health = require('../models/health.model');
 
 // APIs
 // Get all
-router.get('/health', function(req, res) {
+router.get('/data', function(req, res) {
   Health.find({}, function(err, docs) {
     if(err) return console.error(err);
     res.json(docs);
@@ -13,7 +13,7 @@ router.get('/health', function(req, res) {
 });
 
 // Count all
-router.get('/health/count', function(req, res) {
+router.get('/data/count', function(req, res) {
   Health.count(function(err, count) {
     if(err) return console.error(err);
     res.json(count);
@@ -21,7 +21,7 @@ router.get('/health/count', function(req, res) {
 });
 
 // Insert
-router.post('/health', function(req, res) {
+router.post('/data', function(req, res) {
   var obj = new Health(req.body);
   obj.save(function(err, obj) {
     if(err) return console.error(err);
@@ -30,7 +30,7 @@ router.post('/health', function(req, res) {
 });
 
 // Get by id
-router.get('/health/:id', function(req, res) {
+router.get('/data/:id', function(req, res) {
   Health.findOne({_id: req.params.id}, function(err, obj) {
     if(err) return console.error(err);
     res.json(obj);
@@ -38,7 +38,7 @@ router.get('/health/:id', function(req, res) {
 });
 
 // Update by id
-router.put('/health/:id', function(req, res) {
+router.put('/data/:id', function(req, res) {
   Health.findOneAndUpdate({_id: req.params.id}, req.body, function(err) {
     if(err) return console.error(err);
     res.sendStatus(200);
@@ -46,7 +46,7 @@ router.put('/health/:id', function(req, res) {
 });
 
 // Delete by id
-router.delete('/health/:id', function(req, res) {
+router.delete('/data/:id', function(req, res) {
   Health.findOneAndRemove({_id: req.params.id}, function(err) {
     if(err) return console.error(err);
     res.sendStatus(200);

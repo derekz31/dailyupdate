@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-
 import { ToastComponent } from '../../shared/toast/toast.component';
 
 import { DataService } from '../../services/data.service';
@@ -13,13 +12,13 @@ import { DataService } from '../../services/data.service';
 })
 export class HealthComponent implements OnInit {
 
-  cats = [];
+  healthdata = [];
   isLoading = true;
 
-  cat = {};
+  health = {};
   isEditing = false;
 
-  addCatForm: FormGroup;
+  addHealthForm: FormGroup;
   name = new FormControl('', Validators.required);
   age = new FormControl('', Validators.required);
   weight = new FormControl('', Validators.required);
@@ -30,65 +29,65 @@ export class HealthComponent implements OnInit {
               private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.getCats();
+    this.getHealthData();
 
-    this.addCatForm = this.formBuilder.group({
+    this.addHealthForm = this.formBuilder.group({
       name: this.name,
       age: this.age,
       weight: this.weight
     });
   }
 
-  getCats() {
-    this.dataService.getCats().subscribe(
-      data => this.cats = data,
+  getHealthData() {
+    this.dataService.getHealthData().subscribe(
+      data => this.healthdata = data,
       error => console.log(error),
       () => this.isLoading = false
     );
   }
 
-  addCat() {
-    this.dataService.addCat(this.addCatForm.value).subscribe(
+  addHealth() {
+    this.dataService.addHealth(this.addHealthForm.value).subscribe(
       res => {
-        const newCat = res.json();
-        this.cats.push(newCat);
-        this.addCatForm.reset();
+        const newHealth = res.json();
+        this.healthdata.push(newHealth);
+        this.addHealthForm.reset();
         this.toast.setMessage('item added successfully.', 'success');
       },
       error => console.log(error)
     );
   }
 
-  enableEditing(cat) {
+  enableEditing(health) {
     this.isEditing = true;
-    this.cat = cat;
+    this.health = health;
   }
 
   cancelEditing() {
     this.isEditing = false;
-    this.cat = {};
+    this.health = {};
     this.toast.setMessage('item editing cancelled.', 'warning');
-    // reload the cats to reset the editing
-    this.getCats();
+    // reload the healthdata to reset the editing
+    this.getHealthData();
   }
 
-  editCat(cat) {
-    this.dataService.editCat(cat).subscribe(
+  editHealth(health) {
+    this.dataService.editHealth(health).subscribe(
       res => {
         this.isEditing = false;
-        this.cat = cat;
+        this.health = health;
         this.toast.setMessage('item edited successfully.', 'success');
       },
       error => console.log(error)
     );
   }
 
-  deleteCat(cat) {
+  deleteHealth(health) {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
-      this.dataService.deleteCat(cat).subscribe(
+      this.dataService.deleteHealth(health).subscribe(
         res => {
-          const pos = this.cats.map(elem => { return elem._id; }).indexOf(cat._id);
-          this.cats.splice(pos, 1);
+          const pos = this.healthdata.map(elem => { return elem._id; }).indexOf(health._id);
+          this.healthdata.splice(pos, 1);
           this.toast.setMessage('item deleted successfully.', 'success');
         },
         error => console.log(error)

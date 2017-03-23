@@ -12,28 +12,28 @@ export class DataService {
 
   constructor(private http: Http) { }
 
-  getCats(): Observable<any> {
-    return this.http.get('/api/health').map(res => res.json());
+  getHealthData(): Observable<any> {
+    return this.http.get('/api/health/data').map(res => res.json());
   }
 
-  countCats(): Observable<any> {
-    return this.http.get('/api/health/count').map(res => res.json());
+  countHealthData(): Observable<any> {
+    return this.http.get('/api/health/data/count').map(res => res.json());
   }
 
-  addCat(cat): Observable<any> {
-    return this.http.post('/api/health', JSON.stringify(cat), this.options);
+  addHealth(health): Observable<any> {
+    return this.http.post('/api/health/data', JSON.stringify(health), this.options);
   }
 
-  getCat(cat): Observable<any> {
-    return this.http.get(`/api/health/${cat._id}`, this.options);
+  getHealth(health): Observable<any> {
+    return this.http.get(`/api/health/data/${health._id}`, this.options);
   }
 
-  editCat(cat): Observable<any> {
-    return this.http.put(`/api/health/${cat._id}`, JSON.stringify(cat), this.options);
+  editHealth(health): Observable<any> {
+    return this.http.put(`/api/health/data/${health._id}`, JSON.stringify(health), this.options);
   }
 
-  deleteCat(cat): Observable<any> {
-    return this.http.delete(`/api/health/${cat._id}`, this.options);
+  deleteHealth(health): Observable<any> {
+    return this.http.delete(`/api/health/data/${health._id}`, this.options);
   }
 
 }

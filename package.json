@@ -1,6 +1,6 @@
 {
   "name": "dailyupdate",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "author": "derekz31",
   "description": "Site to manage personal daily updated information",
@@ -8,6 +8,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
+    "start-prod": "node src/server/app.js",
     "start": "concurrently \"mongod\" \"ng build -w\" \"nodemon src/server/app.js\"",
     "prod": "concurrently \"mongod\" \"ng build -aot -prod\" \"node src/server/app.js\"",
     "test": "ng test",
@@ -24,6 +25,7 @@
     "@angular/platform-browser": "^2.4.0",
     "@angular/platform-browser-dynamic": "^2.4.0",
     "@angular/router": "^3.4.0",
+    "angular2-jwt": "^0.1.28",
     "body-parser": "1.16.1",
     "bootstrap": "4.0.0-alpha.5",
     "core-js": "^2.4.1",
@@ -33,7 +35,11 @@
     "morgan": "1.8.1",
     "rxjs": "^5.1.0",
     "tether": "1.4.0",
-    "zone.js": "^0.7.6"
+    "zone.js": "^0.7.6",
+    "bcryptjs": "*",
+    "jsonwebtoken": "*",
+    "passport": "*",
+    "passport-jwt": "*"
   },
   "devDependencies": {
     "@angular/cli": "^1.0.0-rc.2",
