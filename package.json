@@ -8,8 +8,8 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "start-prod": "node src/server/app.js",
-    "start": "concurrently \"mongod\" \"ng build -w\" \"nodemon src/server/app.js\"",
+    "start": "node src/server/app.js",
+    "start-local": "concurrently \"mongod\" \"ng build -w\" \"nodemon src/server/app.js\"",
     "prod": "concurrently \"mongod\" \"ng build -aot -prod\" \"node src/server/app.js\"",
     "test": "ng test",
     "lint": "ng lint",
